@@ -3,7 +3,6 @@
 (require "utility.rkt")
 (require "runner.rkt")
 (require "parcer.rkt")
-(require "variable_env.rkt")
 
 (define env '((a 1) (b 2) (c 5)))
 
