@@ -22,6 +22,25 @@
        (cons (list (car list-of-varname)
                    (car list-of-value))
              env)))
+             
+(define run-bool-parsed-code
+  (lambda(parsed-code env)
+    (let ((op (elementAt parsed-code 0))
+          (num1 (run-neo-parsed-code (elementAt parsed-code 1) env))
+          (num1 (run-neo-parsed-code (elementAt parsed-code 2) env)))
+            (cond
+              ((equal? op '>) (> num1 num2))
+              ((equal? op '<) (< num1 num2))
+              ((equal? op '>=) (>= num1 num2))
+              ((equal? op '<=) (<= num1 num2))
+              ((equal? op '==) (= num1 num2))
+              ((equal? op '!=) (not num1 num2))
+              ((equal? op '&&) (and num1 num2))
+              (else (not num1))       
+          )
+       )
+   )
+)            
 (define run-math-exp
   (lambda (op num1 num2)
     (cond
@@ -37,7 +56,11 @@
   
   (define run-let-exp
     (lambda (parsed-code env)
-      (let (
+      (let ((list-of-name getVarnames (elementAt parsed-code 1))
+            (list-of-values getValues (elementAt parsed-code 1))
+            (new-env (extend-env list-of-names list-of-values env))
+            (body (elementAt parsed-code 2)))
       (run-neo-parsed-code parsed-code env)
       )
     )
+(provide (all-defined-out)
