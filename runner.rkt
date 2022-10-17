@@ -22,6 +22,22 @@
        (cons (list (car list-of-varname)
                    (car list-of-value))
              env)))
+(define run-math-exp
+  (lambda (op num1 num2)
+    (cond
+      ((equal? op '+) (+ num1 num2))
+      ((equal? op '-) (- num1 num2))
+      ((equal? op '/) (/ num1 num2))
+      ((equal? op '//) (quotient num1 num2))
+      ((equal? op '%) (modulo num1 num2))
+      (else #false)       
       )
     )
   )
+  
+  (define run-let-exp
+    (lambda (parsed-code env)
+      (let (
+      (run-neo-parsed-code parsed-code env)
+      )
+    )
