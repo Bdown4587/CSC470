@@ -6,6 +6,5 @@
 
 (define env '((a 1) (b 2) (c 5)))
 
-(define parsed-neo-code (neo-parser '(call (function(x) (local-vars ((a 3) (b 7) (c 3)) (math + a b))) (5))))
-
-(run-neo-parsed-code parsed-neo-code env)
+ dispalyln (neo-parser '(call (function(x) (local-vars ((a 1) (b 2) (c 3)) (math + a b))) (5)))
+ 
