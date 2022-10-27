@@ -4,7 +4,16 @@
 (require "runner.rkt")
 (require "parcer.rkt")
 
-(define env '((a 1) (b 2) (c 5)))
+(define parsed-neo-code (neo-parser '(call (function (a) b) (5))))
 
- dispalyln (neo-parser '(call (function(x) (local-vars ((a 1) (b 2) (c 3)) (math + a b))) (5)))
+(run-neo-parsed-code parsed-neo-code env)
+
+;((r 5) (a 1) (b 2) (c 5))
+function fun1(a){
+  return d;
+}
+fun1(5);                          
+                         
+
+
  
